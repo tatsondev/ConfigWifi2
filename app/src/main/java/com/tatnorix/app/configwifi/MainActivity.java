@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //Set view
     protected void setFragment(Fragment fragment) {
         android.support.v4.app.FragmentTransaction t = getSupportFragmentManager().beginTransaction();
         t.replace(R.id.frameView, fragment);
