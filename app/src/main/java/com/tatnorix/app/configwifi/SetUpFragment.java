@@ -20,15 +20,31 @@ public class SetUpFragment extends Fragment {
         View view = inflater.inflate(R.layout.setup_view, container, false);
 
         mWebView = (WebView) view.findViewById(R.id.webview_setup);
-        mWebView.loadUrl("https://192.168.0.1");
+
+        LoadWeb("192.168.0.1");
+        return view;
+    }
+    public void LoadWeb(String url){
+        mWebView.loadUrl("http://"+url+"/");
 
         // Enable Javascript
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-        // Force links and redirects to open in the WebView instead of in a browser
-        mWebView.setWebViewClient(new WebViewClient());
+        webSettings.setBuiltInZoomControls(true);
+        webSettings.setDisplayZoomControls(false);
 
-        return view;
+        webSettings.setLoadWithOverviewMode(true);
+        webSettings.setUseWideViewPort(true);
+
+        // Force links and redirects to open in the WebView instead of in a browser
+        mWebView.setWebViewClient(new WebViewClient(){
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+
+            }
+        });
     }
+
 }
